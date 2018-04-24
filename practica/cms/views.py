@@ -37,8 +37,7 @@ def edit(request, key):
 			resource = Pages.objects.get(name=key)
 			
 			if request.method == 'POST':
-				t = str(request.POST)
-				text = t.split("['")[1].split("']")[0]
+				text = str(request.POST['text'])
 				updated = Pages(id=resource.id, name=resource.name, page=text) 
 				updated.save()
 				resource.page = text
